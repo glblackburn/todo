@@ -4,17 +4,30 @@ SHELL=/bin/bash
 
 default: help
 
+.PHONY: install-nvm
+install-nvm: ## install nvm to manage node.js versions
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+
+.PHONY: install-node
+install-node: ## install node.js using nvm
+	nvm install node
+
+.PHONY:
 node_modules: package.json ## install nodejs libs
 	npm i
 	touch $@
 
-.PHONY:
-node: ## run the node app
+.PHONY: run
+run: ## run the node app
 	node .
 
 .PHONY: clean
 clean: ## Removes all files in the .gitignore
 	git clean -fdX
+
+.PHONY: open-readme
+open-readme: ## Open the README.md file in Google Chrome
+	/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome README.md
 
 .PHONY: help
 help:
