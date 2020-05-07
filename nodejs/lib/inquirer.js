@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const productName = "A better TODO!"
+const productName = "A Better TODO!"
 
 module.exports = {
   askTodoData: () => {
