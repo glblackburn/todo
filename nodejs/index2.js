@@ -29,7 +29,7 @@ function deleteTodos(todos) {
 
 banner();
 
-const todo_dao = require('./todo-dao')
+const todo_dao = require('./lib/todo-dao')
 todo_dao.loadTestData()
 
 const inquirer  = require('./lib/inquirer');

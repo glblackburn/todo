@@ -1,6 +1,6 @@
 jest.setTimeout(60000)
 
-const lib_dir = '../..'
+const lib_dir = '../../lib'
 const todo_dao = require(`${lib_dir}/todo-dao`)
 
 describe('todo DAO CRUD tests', () => {
