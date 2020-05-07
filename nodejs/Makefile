@@ -20,8 +20,8 @@ node_modules: package.json ## install nodejs libs
 .PHONY: build
 build: node_modules ## build the app
 
-.PHONY: test ## test the app
-test: build
+.PHONY: test
+test: build ## test the app
 	make -C tests test
 
 .PHONY: run
