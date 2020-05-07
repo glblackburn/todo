@@ -44,6 +44,7 @@ function showTodoList() {
 function loadTestData() {
     add("test data 1")
     add("test data 2")
+    add("test data add a spinner to delete")
     add("test data 3")
 }
 

@@ -1,12 +1,13 @@
-// trying a fancy version following this example
+const productName = "A better TODO!"
+// trying a fancy version following this example.
 // https://www.sitepoint.com/javascript-command-line-interface-cli-node-js/
+// the first version is in index_old.js
 
 const chalk = require('chalk');
 const clear = require('clear');
 const figlet = require('figlet');
-
-const productName = "A better TODO!"
-
+const todo_dao = require('./lib/todo-dao')
+const inquirer  = require('./lib/inquirer');
 
 function banner() {
     clear();
@@ -17,6 +18,19 @@ function banner() {
     );
 }
 
+function showTodos() {
+    todo_dao.showTodoList()
+}
+
+function addTodo(todo) {
+    console.log('Adding TODO:')
+    console.log(JSON.stringify(todo, null, '  '));
+    todo_dao.add(todo.text);
+    console.log('Added TODO:')
+}
+
+// TODO: would love to have a spinner added here.
+// https://github.com/nathanpeck/clui#spinnerstatustext
 function deleteTodos(todos) {
     console.log('Deleting TODOs:')
     console.log(JSON.stringify(todos, null, '  '));
@@ -27,28 +41,20 @@ function deleteTodos(todos) {
     console.log('Deleted TODOs:')
 }
 
-banner();
-
-const todo_dao = require('./lib/todo-dao')
-todo_dao.loadTestData()
-
-const inquirer  = require('./lib/inquirer');
-
 const run = async () => {
+    banner();
+    todo_dao.loadTestData()
     var running = true
     while (running) {
 	const mainMenu = await inquirer.askMainMenu();
 	banner();
 	switch (mainMenu.choice) {
 	case 'List':
-            todo_dao.showTodoList()
+	    showTodos()
             break;
 	case 'Create':
 	    const todo = await inquirer.askTodoData();
-	    console.log('Adding TODO:')
-	    console.log(JSON.stringify(todo, null, '  '));
-	    todo_dao.add(todo.text);
-	    console.log('Added TODO:')
+	    addTodo(todo)
             break;
 	case 'Delete':
 	    const todos = await inquirer.askDeleteTodos(todo_dao.getTodoList());
