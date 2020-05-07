@@ -26,7 +26,8 @@ test: build
 
 .PHONY: run
 run: build ## run the node app
-	node .
+#	node index.js
+	node index2.js
 
 .PHONY: clean
 clean: ## Removes all files in the .gitignore
