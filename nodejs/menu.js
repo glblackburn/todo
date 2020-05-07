@@ -27,7 +27,6 @@ function showMenu() {
     console.log('u. Update a TODO')
     console.log('d. Delete a TODO')
     console.log('x. Exit')
-    console.log('>')
 }
 
 function showTodoList() {
@@ -45,7 +44,7 @@ function processCommand() {
     const rl = readline.createInterface({
 	input: process.stdin,
 	output: process.stdout,
-	prompt: 'Enter letter >'
+	prompt: 'Enter letter:> '
     });
 
     showMenu()
@@ -71,6 +70,9 @@ function processCommand() {
 	    console.log('d. Delete a TODO')
             break;
 	case 'x':
+	    rl.close()
+            break;
+	case 'q':
 	    rl.close()
             break;
 	default:
