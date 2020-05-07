@@ -1,0 +1,13 @@
+{
+  "reporters": [
+    "default",
+    [
+      "./node_modules/jest-html-reporter",
+      {
+        "outputPath": "default-test-report-parallel.html",
+        "pageTitle": "Default Title - Tests Report",
+	      "statusIgnoreFilter": "pending"
+      }
+    ]
+  ]
+}

@@ -18,7 +18,7 @@ node_modules: package.json ## install nodejs libs
 	touch $@
 
 .PHONY: run
-run: ## run the node app
+run: node_modules ## run the node app
 	node .
 
 .PHONY: clean

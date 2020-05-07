@@ -1,0 +1,19 @@
+{
+  "dependencies": {
+    "jest": "^25.1.0",
+    "jest-extended": "^0.11.1",
+    "jest-html-reporter": "^2.5.0",
+    "uuid": "^3.3.2",
+    "wait-for-expect": "^3.0.1"
+  },
+  "jest": {
+    "setupFilesAfterEnv": [
+      "jest-extended"
+    ]
+  },
+  "private": true,
+  "devDependencies": {
+    "@jest/types": "^24.7.0",
+    "@types/jest": "^24.0.11"
+  }
+}

@@ -1,6 +1,8 @@
 {
     "dependencies": {
         "fast-csv": "^1.0.2",
-        "googleapis": "39.2.0"
+        "googleapis": "39.2.0",
+        "sprintf-js": "^1.1.2",
+        "uuid": "^3.3.2"
     }
 }
