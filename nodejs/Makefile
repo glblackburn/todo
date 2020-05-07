@@ -36,6 +36,11 @@ clean: ## Removes all files in the .gitignore
 open-readme: ## Open the README.md file in Google Chrome
 	/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome README.md
 
+.PHONY: depcheck
+depcheck: build ## Check for unused dependencies
+	node ./node_modules/depcheck/bin/depcheck.js --ignores depcheck
+	make -C tests depcheck
+
 .PHONY: help
 help:
 	@grep -hE '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'

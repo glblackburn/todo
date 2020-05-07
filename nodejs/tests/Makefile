@@ -19,14 +19,19 @@ node_modules: package.json
 	npm i
 	touch $@
 
+.PHONY: build
+build: node_modules ## build the tests
+
+.PHONY: depcheck
+depcheck: build ## Check for unused dependencies
+	node ./node_modules/depcheck/bin/depcheck.js --ignores depcheck
+
 .PHONY: execute
-execute: node_modules ## Run tests without any setup or teardown
-#	$(JEST) -t 'parallel: ${TEST}' --config jest.parallel.config.json ${TEST_SUITE}
+execute: build ## Run tests without any setup or teardown
 	$(JEST) -t 'parallel: ${TEST}' ${TEST_SUITE}
+#	$(JEST) -t 'parallel: ${TEST}' --config jest.parallel.config.json ${TEST_SUITE}
 #	JEST_HTML_REPORTER_PAGE_TITLE=${JEST_HTML_REPORTER_PAGE_TITLE} \
 #	JEST_HTML_REPORTER_OUTPUT_PATH=${JEST_HTML_REPORTER_OUTPUT_PATH} \
-
-
 
 .PHONY: test
 test: execute ## Run tests with any setup or teardown
