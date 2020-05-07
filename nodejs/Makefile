@@ -17,8 +17,15 @@ node_modules: package.json ## install nodejs libs
 	npm i
 	touch $@
 
+.PHONY: build
+build: node_modules ## build the app
+
+.PHONY: test ## test the app
+test: build
+	make -C tests test
+
 .PHONY: run
-run: node_modules ## run the node app
+run: build ## run the node app
 	node .
 
 .PHONY: clean
