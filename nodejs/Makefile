@@ -28,13 +28,21 @@ test: build ## test the app
 run: build ## run the node app
 	node index.js
 
+.PHONY: run-old
+run-old: build ## run the node app
+	node index_old.js
+
 .PHONY: clean
 clean: ## Removes all files in the .gitignore
 	git clean -fdX
 
-.PHONY: open-readme
-open-readme: ## Open the README.md file in Google Chrome
+.PHONY: open-readme-chrome
+open-readme-chrome: ## Open the README.md file in Google Chrome
 	/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome README.md
+
+.PHONY: open-readme
+open-readme: ## Open the README.md with the default MacOS app
+	open README.md
 
 .PHONY: depcheck
 depcheck: build ## Check for unused dependencies
