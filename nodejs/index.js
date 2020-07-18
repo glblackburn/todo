@@ -26,7 +26,6 @@ function banner() {
     );
 }
 
-// TODO: complete the about function and add to menu options.
 function showAbout() {
     console.log('node.js npm libraries')
     npm_libraries.forEach(lib => {
@@ -71,6 +70,9 @@ const run = async () => {
 	switch (mainMenu.choice) {
 	case 'List':
 	    showTodos()
+            break;
+	case 'About':
+	    showAbout()
             break;
 	case 'Create':
 	    const todo = await inquirer.askTodoData();

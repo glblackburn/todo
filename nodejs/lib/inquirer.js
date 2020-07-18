@@ -36,6 +36,11 @@ module.exports = {
           message: 'Select your option:',
 	  choices: [
 	      {
+		  key: 'a',
+		  name: `About ${productName}`,
+		  value: 'About'
+	      },
+	      {
 		  key: 'l',
 		  name: 'List the TODOs',
 		  value: 'List'
