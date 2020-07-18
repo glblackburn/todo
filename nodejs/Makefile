@@ -15,6 +15,7 @@ install-node: ## install node.js using nvm
 .PHONY:
 node_modules: package.json ## install nodejs libs
 	npm i
+	npm update
 	touch $@
 
 .PHONY: build
